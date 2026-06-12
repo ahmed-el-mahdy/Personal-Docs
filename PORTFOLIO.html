@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed ElMahdy — Platform/DevOps Engineer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a2e; background: #0f0f23; }
+
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #0052CC 0%, #6554C0 50%, #00875A 100%); padding: 80px 20px; text-align: center; color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); }
+        .hero h1 { font-size: 3.2em; margin-bottom: 8px; position: relative; }
+        .hero .subtitle { font-size: 1.4em; opacity: 0.9; margin-bottom: 12px; position: relative; }
+        .hero .location { font-size: 1em; opacity: 0.7; margin-bottom: 8px; position: relative; }
+        .hero .summary { font-size: 0.95em; opacity: 0.8; max-width: 750px; margin: 16px auto 0; line-height: 1.6; position: relative; }
+        .hero-links { margin-top: 28px; position: relative; }
+        .hero-links a { color: white; background: rgba(255,255,255,0.12); padding: 10px 22px; border-radius: 6px; text-decoration: none; margin: 4px 6px; font-size: 14px; border: 1px solid rgba(255,255,255,0.25); display: inline-block; transition: all 0.2s; }
+        .hero-links a:hover { background: rgba(255,255,255,0.25); transform: translateY(-1px); }
+
+        /* Stats */
+        .stats-bar { background: #172B4D; padding: 32px 20px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; text-align: center; }
+        .stat { color: white; }
+        .stat-number { font-size: 2.4em; font-weight: 700; color: #00C7E6; }
+        .stat-label { font-size: 0.8em; opacity: 0.7; margin-top: 4px; }
+
+        /* Sections */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 60px 0; }
+        h2 { color: #0052CC; font-size: 2em; margin-bottom: 30px; text-align: center; }
+        h3 { color: #172B4D; margin-bottom: 16px; font-size: 1.2em; }
+
+        /* Cards */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .card { background: white; border-radius: 12px; padding: 28px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+        .card-icon { font-size: 2em; margin-bottom: 12px; }
+        .card p { color: #5e6c84; line-height: 1.6; font-size: 14px; }
+
+        /* Tech Stack */
+        .tech-section { background: #f4f5f7; padding: 60px 20px; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto; }
+        .tech-category { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .tech-category h4 { color: #0052CC; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .tech-tag { background: #e8ecf0; padding: 4px 10px; border-radius: 4px; font-size: 12px; color: #253858; }
+
+        /* Certifications */
+        .certs-section { padding: 60px 20px; background: white; }
+        .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .cert-item { border: 2px solid #dfe1e6; border-radius: 12px; padding: 24px; text-align: center; transition: all 0.2s; }
+        .cert-item:hover { border-color: #0052CC; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,82,204,0.1); }
+        .cert-item.highlight { border-color: #6554C0; background: #f8f6ff; }
+        .cert-badge { font-size: 2.5em; margin-bottom: 12px; }
+        .cert-name { font-weight: 700; color: #172B4D; margin-bottom: 6px; font-size: 15px; }
+        .cert-issuer { font-size: 13px; color: #5e6c84; }
+        .cert-date { font-size: 12px; color: #97a0af; margin-top: 8px; }
+
+        /* Experience */
+        .exp-section { padding: 60px 20px; background: #fafbfc; }
+        .timeline { max-width: 850px; margin: 0 auto; position: relative; padding-left: 30px; }
+        .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, #0052CC, #6554C0, #00875A, #FF991F); border-radius: 2px; }
+        .timeline-item { position: relative; margin-bottom: 40px; padding-left: 30px; }
+        .timeline-item::before { content: ''; position: absolute; left: -26px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: #0052CC; border: 3px solid white; box-shadow: 0 0 0 3px #0052CC; }
+        .timeline-item.current::before { background: #00875A; box-shadow: 0 0 0 3px #00875A; }
+        .timeline-item h3 { color: #0052CC; margin-bottom: 4px; }
+        .timeline-company { font-weight: 600; color: #172B4D; font-size: 15px; }
+        .timeline-date { font-size: 13px; color: #97a0af; margin-bottom: 10px; }
+        .timeline-desc { color: #5e6c84; font-size: 14px; line-height: 1.6; }
+        .timeline-desc ul { padding-left: 18px; margin-top: 8px; }
+        .timeline-desc li { margin-bottom: 5px; }
+        .timeline-tech { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+        .timeline-tech span { background: #e8ecf0; padding: 3px 8px; border-radius: 4px; font-size: 11px; color: #253858; }
+
+        /* Projects */
+        .projects-section { padding: 60px 20px; background: white; }
+        .project-card { background: #f4f5f7; border-radius: 12px; padding: 24px; margin-bottom: 20px; border-left: 4px solid #0052CC; transition: transform 0.2s; }
+        .project-card:hover { transform: translateX(4px); }
+        .project-card h3 { color: #0052CC; margin-bottom: 8px; }
+        .project-card p { color: #5e6c84; font-size: 14px; line-height: 1.5; }
+        .project-card .year { font-size: 12px; color: #97a0af; margin-bottom: 8px; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+        .project-tech span { background: #0052CC; color: white; padding: 3px 10px; border-radius: 4px; font-size: 11px; }
+
+        /* Education */
+        .edu-section { padding: 60px 20px; background: #fafbfc; }
+        .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+        .edu-card { background: white; padding: 24px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .edu-card .icon { font-size: 2.5em; margin-bottom: 12px; }
+        .edu-card h3 { color: #172B4D; font-size: 16px; margin-bottom: 4px; }
+        .edu-card .school { color: #5e6c84; font-size: 14px; }
+        .edu-card .year { color: #97a0af; font-size: 13px; margin-top: 4px; }
+
+        /* Contact */
+        .contact-section { background: linear-gradient(135deg, #172B4D, #0052CC); padding: 60px 20px; text-align: center; color: white; }
+        .contact-section h2 { color: white; }
+        .contact-section p { opacity: 0.8; margin-bottom: 8px; }
+        .contact-links { margin-top: 24px; }
+        .contact-links a { color: white; background: rgba(255,255,255,0.1); padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 4px 8px; display: inline-block; border: 1px solid rgba(255,255,255,0.25); transition: all 0.2s; }
+        .contact-links a:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+
+        /* Footer */
+        footer { background: #0f0f23; padding: 20px; text-align: center; color: #5e6c84; font-size: 13px; }
+
+        /* Languages */
+        .lang-badges { display: flex; justify-content: center; gap: 16px; margin-top: 12px; }
+        .lang-badge { background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 6px; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+    <h1>Ahmed ElMahdy</h1>
+    <div class="subtitle">Platform / DevOps Engineer</div>
+    <div class="location">📍 New Cairo, Egypt</div>
+    <div class="summary">Cloud &amp; DevOps Engineer with 5+ years of experience delivering cloud infrastructure, CI/CD, Kubernetes platforms, and environment modernization across Azure and AWS. Proven ability to stabilize inherited platforms, onboard microservices, implement secure delivery patterns, and drive operational reliability.</div>
+    <div class="hero-links">
+        <a href="mailto:a.elmahdy.mail@gmail.com">📧 Email</a>
+        <a href="https://github.com/ahmed-el-mahdy" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/ahmed-el-mahdy-007" target="_blank">LinkedIn</a>
+        <a href="https://www.credly.com/users/ahmed-el-mahdy-mohammad/badges" target="_blank">Credly</a>
+    </div>
+    <div class="lang-badges">
+        <span class="lang-badge">🇬🇧 English — Professional Working</span>
+        <span class="lang-badge">🇪🇬 Arabic — Native</span>
+    </div>
+</div>
+
+<!-- Stats -->
+<div class="stats-bar">
+    <div class="stats-grid">
+        <div class="stat"><div class="stat-number">5+</div><div class="stat-label">Years Cloud/DevOps</div></div>
+        <div class="stat"><div class="stat-number">7+</div><div class="stat-label">Years Total IT</div></div>
+        <div class="stat"><div class="stat-number">3+</div><div class="stat-label">Official Certifications</div></div>
+        <div class="stat"><div class="stat-number">2</div><div class="stat-label">Concurrent Platforms</div></div>
+        <div class="stat"><div class="stat-number">4</div><div class="stat-label">AKS Clusters Managed</div></div>
+        <div class="stat"><div class="stat-number">7</div><div class="stat-label">Microservices in Prod</div></div>
+    </div>
+</div>
+
+<!-- Core Competencies -->
+<section>
+    <div class="container">
+        <h2>Core Competencies</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">☁️</div>
+                <h3>Cloud &amp; Infrastructure</h3>
+                <p>Azure (AZ-104 certified) and AWS (SAA certified). AKS, APIM, App Gateway, Firewall, Key Vault, Entra ID, EC2, Lambda, VPC. Multi-subscription environment design and platform recovery.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚙️</div>
+                <h3>Containers &amp; Orchestration</h3>
+                <p>CKA certified. Production Kubernetes with Helm, Argo CD, Kustomize. Multi-environment AKS deployments, autoscaling, capacity right-sizing, and secure workload delivery.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🏗️</div>
+                <h3>Infrastructure as Code</h3>
+                <p>Terraform (modules, state management, drift analysis, environment alignment). CloudFormation for AWS. Platform recovery through IaC stabilization and alignment.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔄</div>
+                <h3>CI/CD &amp; Automation</h3>
+                <p>GitHub Actions (GitLab migration), Jenkins, CircleCI. DRY pipeline patterns, secret-dependent workflows, multi-branch deployments, automated APIM imports.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <h3>Identity &amp; Security</h3>
+                <p>Azure Entra ID, RBAC, Key Vault secret governance, IAM roles, group-based access control, WAF policies, network segmentation, pod security standards.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Observability &amp; Operations</h3>
+                <p>Prometheus, Grafana, CloudWatch, Application Insights, Azure Monitor. Alert rules, availability tests, runbooks, and incident response.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Stack -->
+<div class="tech-section">
+    <div class="container">
+        <h2>Technology Stack</h2>
+    </div>
+    <div class="tech-grid">
+        <div class="tech-category">
+            <h4>Cloud Platforms</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">Azure</span>
+                <span class="tech-tag">AWS (SAA)</span>
+                <span class="tech-tag">AKS</span>
+                <span class="tech-tag">EKS</span>
+                <span class="tech-tag">APIM</span>
+                <span class="tech-tag">App Gateway</span>
+                <span class="tech-tag">Azure Firewall</span>
+                <span class="tech-tag">Key Vault</span>
+                <span class="tech-tag">Entra ID / B2C</span>
+                <span class="tech-tag">Lambda</span>
+                <span class="tech-tag">S3</span>
+                <span class="tech-tag">EC2</span>
+            </div>
+        </div>
+        <div class="tech-category">
+            <h4>DevOps &amp; IaC</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">CloudFormation</span>
+                <span class="tech-tag">Kubernetes</span>
+                <span class="tech-tag">Helm</span>
+                <span class="tech-tag">Argo CD</span>
+                <span class="tech-tag">Kustomize</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Docker Compose</span>
+            </div>
+        </div>
+        <div class="tech-category">
+            <h4>CI/CD</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">Jenkins</span>
+                <span class="tech-tag">CircleCI</span>
+                <span class="tech-tag">GitLab CI</span>
+                <span class="tech-tag">Ansible</span>
+            </div>
+        </div>
+        <div class="tech-category">
+            <h4>Languages &amp; Dev</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">Bash/Shell</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">C# / .NET 8</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Angular</span>
+                <span class="tech-tag">YAML</span>
+                <span class="tech-tag">HCL</span>
+            </div>
+        </div>
+        <div class="tech-category">
+            <h4>Monitoring</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">Prometheus</span>
+                <span class="tech-tag">Grafana</span>
+                <span class="tech-tag">CloudWatch</span>
+                <span class="tech-tag">App Insights</span>
+                <span class="tech-tag">Azure Monitor</span>
+            </div>
+        </div>
+        <div class="tech-category">
+            <h4>Systems &amp; Networking</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">Linux Admin</span>
+                <span class="tech-tag">Windows Server</span>
+                <span class="tech-tag">Active Directory</span>
+                <span class="tech-tag">DNS / DHCP</span>
+                <span class="tech-tag">VPN</span>
+                <span class="tech-tag">Proxmox</span>
+                <span class="tech-tag">VLANs</span>
+                <span class="tech-tag">Firewalls</span>
+                <span class="tech-tag">Nginx</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Certifications -->
+<div class="certs-section">
+    <div class="container">
+        <h2>Certifications &amp; Credentials</h2>
+
+        <h3 style="text-align:center; color:#0052CC; margin-bottom:20px;">Official Industry Certifications (Exams Passed)</h3>
+        <div class="certs-grid">
+            <div class="cert-item highlight">
+                <div class="cert-badge">🏗️</div>
+                <div class="cert-name">AWS Solutions Architect – Associate</div>
+                <div class="cert-issuer">Amazon Web Services</div>
+                <div class="cert-date">2025 — Expires Sep 2028</div>
+            </div>
+            <div class="cert-item highlight">
+                <div class="cert-badge">☁️</div>
+                <div class="cert-name">AWS Certified Cloud Practitioner</div>
+                <div class="cert-issuer">Amazon Web Services</div>
+                <div class="cert-date">2025 — Expires Sep 2028</div>
+            </div>
+            <div class="cert-item highlight">
+                <div class="cert-badge">🔐</div>
+                <div class="cert-name">Microsoft Identity &amp; Access Administrator (SC-300)</div>
+                <div class="cert-issuer">Microsoft</div>
+                <div class="cert-date">November 2025</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-badge">🎯</div>
+                <div class="cert-name">McKinsey Forward Program</div>
+                <div class="cert-issuer">McKinsey.org</div>
+                <div class="cert-date">2025</div>
+            </div>
+        </div>
+
+        <h3 style="text-align:center; color:#6554C0; margin-top:40px; margin-bottom:20px;">Exam-Ready Training (Completed)</h3>
+        <div class="certs-grid">
+            <div class="cert-item">
+                <div class="cert-badge">☸️</div>
+                <div class="cert-name">CKA Certification Course — Completed</div>
+                <div class="cert-issuer">KodeKloud (Mumshad Mannambeth)</div>
+                <div class="cert-date">March 2025 — Ready for CNCF exam</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-badge">☁️</div>
+                <div class="cert-name">Azure Administrator Associate (AZ-104) — Training</div>
+                <div class="cert-issuer">Manara</div>
+                <div class="cert-date">November 2025 — Ready for Microsoft exam</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-badge">🔑</div>
+                <div class="cert-name">Microsoft Identity &amp; Access Admin Training</div>
+                <div class="cert-issuer">Microsoft Learn</div>
+                <div class="cert-date">November 2025</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-badge">🎓</div>
+                <div class="cert-name">Advanced Cloud DevOps Nanodegree</div>
+                <div class="cert-issuer">Udacity &amp; MCIT</div>
+                <div class="cert-date">2023</div>
+            </div>
+        </div>
+
+        <h3 style="text-align:center; color:#97a0af; margin-top:40px; margin-bottom:20px;">Additional Training</h3>
+        <div class="certs-grid">
+            <div class="cert-item">
+                <div class="cert-badge">🔐</div>
+                <div class="cert-name">IT Security Foundations: Core Concepts</div>
+                <div class="cert-issuer">LinkedIn Learning</div>
+                <div class="cert-date">—</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-badge">🌐</div>
+                <div class="cert-name">Network Virtualization Concepts</div>
+                <div class="cert-issuer">Broadcom (VMware IT Academy)</div>
+                <div class="cert-date">May 2022</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-badge">💨</div>
+                <div class="cert-name">Cloud &amp; Virtualization Concepts</div>
+                <div class="cert-issuer">Broadcom (VMware IT Academy)</div>
+                <div class="cert-date">May 2022</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-badge">💾</div>
+                <div class="cert-name">Software Defined Storage Concepts</div>
+                <div class="cert-issuer">Broadcom (VMware IT Academy)</div>
+                <div class="cert-date">May 2022</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Experience -->
+<div class="exp-section">
+    <div class="container">
+        <h2>Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item current">
+                <h3>Platform/DevOps Engineer</h3>
+                <div class="timeline-company">Julfar Consultancy Services</div>
+                <div class="timeline-date">January 2026 – Present | Cairo, Egypt</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Stabilized inherited Azure/Terraform platforms across DEV, STAGING, and PROD by resolving drift, state, and configuration risks</li>
+                        <li>Implemented end-to-end microservice onboarding for the ActionAI platform — GitHub repos, GitHub Actions CI/CD, Helm deployments, Argo CD post-sync automation</li>
+                        <li>Integrated secure delivery patterns: Azure Key Vault, Terraform-based secret governance, Azure/Entra group-based RBAC</li>
+                        <li>Modernized CI/CD by migrating pipelines from GitLab to GitHub Actions with validated workflow reliability</li>
+                        <li>Drove platform efficiency through Kubernetes autoscaling, capacity right-sizing, and cloud cost analysis</li>
+                        <li>Improved maintainability through READMEs, Confluence documentation, architecture diagrams, and stakeholder reporting</li>
+                    </ul>
+                    <div class="timeline-tech">
+                        <span>Azure</span><span>Terraform</span><span>Kubernetes</span><span>Helm</span><span>Argo CD</span><span>GitHub Actions</span><span>APIM</span><span>Key Vault</span><span>Entra RBAC</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item current">
+                <h3>Cloud &amp; DevOps Engineer</h3>
+                <div class="timeline-company">Mosadad (Recovery Claims Platform)</div>
+                <div class="timeline-date">January 2026 – Present | Cairo, Egypt</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Recovered and stabilized inherited Azure/Terraform environments across 4 environments (DEV, QA, STAGING, PROD)</li>
+                        <li>Operate 4 AKS clusters with 7 .NET 8 microservices and 2 Angular 19 frontends</li>
+                        <li>Implemented Kustomize-based multi-environment deployment with NGINX ingress and CSI secret provider</li>
+                        <li>Built DRY GitHub Actions CI/CD pipelines with Docker → ACR → AKS → APIM import</li>
+                        <li>Configured production security: WAF, Azure Firewall, APIM rate limiting, Key Vault CSI, B2C auth</li>
+                        <li>Set up Grafana + Prometheus monitoring with Application Insights APM</li>
+                    </ul>
+                    <div class="timeline-tech">
+                        <span>Azure AKS</span><span>Terraform</span><span>.NET 8</span><span>Angular 19</span><span>Kustomize</span><span>MongoDB</span><span>Redis</span><span>GitHub Actions</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>System Administrator</h3>
+                <div class="timeline-company">Julfar Consultancy Services</div>
+                <div class="timeline-date">October 2021 – December 2025 | Cairo, Egypt (4 years 4 months)</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Administered diverse infrastructure: Windows/Linux servers, AWS CloudFormation stacks, VDI environments</li>
+                        <li>Spearheaded DevOps practices: Infrastructure as Code, CI/CD pipeline automation</li>
+                        <li>Automated system configuration, deployments, and provisioning using Bash and Python</li>
+                        <li>Troubleshot complex network issues, maintained cloud security compliance</li>
+                        <li>Reduced manual configuration errors by 20% through automation</li>
+                        <li>Maintained 99.9% uptime through proactive monitoring</li>
+                    </ul>
+                    <div class="timeline-tech">
+                        <span>AWS</span><span>Linux</span><span>Windows Server</span><span>CloudFormation</span><span>Bash</span><span>Python</span><span>VDI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>DevOps Engineer</h3>
+                <div class="timeline-company">Digital Egypt Pioneers Initiative (DEPI) — MCIT</div>
+                <div class="timeline-date">April 2024 – January 2025 | Cairo, Egypt (10 months)</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Comprehensive DevOps training: Git, Ansible, Docker, Jenkins, Kubernetes, Prometheus</li>
+                        <li>AWS Cloud architecture, Terraform for infrastructure as code</li>
+                        <li>Real-world application projects covering the full DevOps lifecycle</li>
+                    </ul>
+                    <div class="timeline-tech">
+                        <span>Docker</span><span>Kubernetes</span><span>Jenkins</span><span>Terraform</span><span>Ansible</span><span>AWS</span><span>Prometheus</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>DevOps Trainee</h3>
+                <div class="timeline-company">Ministry of Communications &amp; IT (MCIT), Egypt</div>
+                <div class="timeline-date">November 2023 – April 2024 | Cairo, Egypt (6 months)</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Six-month intensive program: AWS, CI/CD pipelines, IaC with Terraform &amp; CloudFormation</li>
+                        <li>Deployed websites on AWS, designed automated pipelines, integrated monitoring</li>
+                        <li>Agile collaboration with mentors</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Infrastructure &amp; Systems Engineer</h3>
+                <div class="timeline-company">Shatta Company</div>
+                <div class="timeline-date">March 2019 – February 2020 | Cairo, Egypt (1 year)</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Administered multi-OS environments, Proxmox clusters, VLANs, and firewalls</li>
+                        <li>Implemented VPN connections for secure multi-site connectivity</li>
+                        <li>Managed DNS, DHCP, Active Directory, and security systems</li>
+                        <li>Maintained 99.9% uptime through proactive monitoring</li>
+                    </ul>
+                    <div class="timeline-tech">
+                        <span>Proxmox</span><span>VLANs</span><span>Firewalls</span><span>VPN</span><span>Active Directory</span><span>Linux</span><span>Windows</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Projects -->
+<div class="projects-section">
+    <div class="container">
+        <h2>Featured Projects</h2>
+
+        <div class="project-card">
+            <div class="year">2026</div>
+            <h3>ActionAI Platform Enablement</h3>
+            <p>End-to-end onboarding of new microservices: repository setup, GitHub Actions CI/CD, Helm-based multi-environment deployment, Argo CD post-sync integration. Automated service exposure via Azure APIM endpoint registration. Strengthened secure delivery with Key Vault, Terraform secret governance, and Entra group-based RBAC.</p>
+            <div class="project-tech">
+                <span>Azure</span><span>GitHub Actions</span><span>Helm</span><span>Argo CD</span><span>APIM</span><span>Key Vault</span><span>Entra RBAC</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="year">2026</div>
+            <h3>Mosadad Recovery Claims Platform</h3>
+            <p>Recovered and stabilized inherited Azure/Terraform environments. 7 microservices, 4 AKS clusters, 4 environments. Migrated CI/CD from GitLab to GitHub Actions. Implemented Kubernetes autoscaling, cloud cost optimization, and comprehensive operational documentation.</p>
+            <div class="project-tech">
+                <span>Azure AKS</span><span>Terraform</span><span>GitHub Actions</span><span>Kubernetes</span><span>.NET 8</span><span>Kustomize</span><span>MongoDB</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="year">2025</div>
+            <h3>Serverless Image Processing</h3>
+            <p>Built a serverless image-processing pipeline using S3 and Lambda, reducing operational overhead by 40%.</p>
+            <div class="project-tech">
+                <span>AWS Lambda</span><span>S3</span><span>Python</span><span>CloudFormation</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="year">2025</div>
+            <h3>N8N + Nginx + Ngrok Automation</h3>
+            <p>Containerized workflow automation platform with reverse proxy, SSL, and automated ngrok URL synchronization for webhook continuity.</p>
+            <div class="project-tech">
+                <span>Docker Compose</span><span>Nginx</span><span>Ngrok</span><span>Shell</span><span>n8n</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="year">2024</div>
+            <h3>DevOps CI/CD Project (3-Tier App)</h3>
+            <p>Automated deployment of a 3-tier application on AWS using Jenkins, Terraform, and EKS with auto-scaling and high availability.</p>
+            <div class="project-tech">
+                <span>Jenkins</span><span>Terraform</span><span>EKS</span><span>AWS</span><span>Auto-scaling</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="year">2024</div>
+            <h3>Shell-Scripted Database Management System</h3>
+            <p>CLI-based database management system built entirely with shell scripts for local data storage and query operations (DEPI &amp; MCIT).</p>
+            <div class="project-tech">
+                <span>Bash</span><span>Shell Scripting</span><span>Linux</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="year">2023</div>
+            <h3>UdaPeople CI/CD App</h3>
+            <p>Deployed a dynamic website using CloudFormation and CircleCI integrated with AWS services. Final graduation project for the DevOps Nanodegree.</p>
+            <div class="project-tech">
+                <span>CloudFormation</span><span>CircleCI</span><span>AWS</span><span>Ansible</span><span>Prometheus</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="year">2022</div>
+            <h3>AWS Infrastructure Automation</h3>
+            <p>Automated AWS static site infrastructure using CloudFormation templates for repeatable provisioning.</p>
+            <div class="project-tech">
+                <span>CloudFormation</span><span>S3</span><span>AWS</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Education -->
+<div class="edu-section">
+    <div class="container">
+        <h2>Education</h2>
+        <div class="edu-grid">
+            <div class="edu-card">
+                <div class="icon">🎓</div>
+                <h3>B.Sc. Computer Science</h3>
+                <div class="school">Delta University for Science &amp; Technology</div>
+                <div class="year">2014–2018 | GPA: 3.7</div>
+            </div>
+            <div class="edu-card">
+                <div class="icon">🏛️</div>
+                <h3>ITI Diploma — Network &amp; System Administration</h3>
+                <div class="school">Information Technology Institute</div>
+                <div class="year">October 2018 – January 2019</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact -->
+<div class="contact-section">
+    <h2>Let's Connect</h2>
+    <p>Open to Senior DevOps / Platform Engineer / Cloud Architect roles</p>
+    <p style="font-size: 14px;">Remote, UAE, KSA, or Egypt-based</p>
+    <div class="contact-links">
+        <a href="mailto:a.elmahdy.mail@gmail.com">📧 a.elmahdy.mail@gmail.com</a>
+        <a href="https://github.com/ahmed-el-mahdy" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/ahmed-el-mahdy-007" target="_blank">LinkedIn</a>
+        <a href="https://www.credly.com/users/ahmed-el-mahdy-mohammad/badges" target="_blank">Certifications</a>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Ahmed ElMahdy — Platform Engineer | AWS SAA • SC-300 • CKA-Ready • AZ-104-Ready</p>
+</footer>
+
+</body>
+</html>
